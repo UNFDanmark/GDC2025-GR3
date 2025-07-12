@@ -1,41 +1,69 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    public Rigidbody rb;
-    public int health = 10;
-    public int dih = 14;
-    string navn = "Wilson";
-    bool has_erection = true;
-    public float speed = 20f;
-    public float dihCooldown = 1;
-
-    public InputAction moveAction;
+    public CharacterController controller;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Transform cam;
+    bool Gliding;
+    public float speed = 6f;
+    public GameObject grounded;
+    private isgrounded iGG;
+    public float turnSmoothTime = 0.4f;
+    float _turnSmooth;
+    public InputAction jumpAction;
+    
+    
+    
+    void start()
     {
-        rb.GetComponent<Rigidbody>();
-        moveAction.Enable();
-
-
+        jumpAction.Enable();
+        iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
     }
-
     // Update is called once per frame
     void Update()
     {
-
-        Vector2 moveInput = moveAction.ReadValue<Vector2>();
-
-        Vector3 newVelocity = rb.linearVelocity;
-
-        newVelocity.x = moveInput.x * speed;
-        newVelocity.z = moveInput.y * speed;
-
-        rb.linearVelocity = newVelocity;
+            
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical);
         
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooth, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
+            Vector3 moveDir = cam.forward;
+            controller.Move(moveDir * (speed * Time.deltaTime * vertical));
+            
+        }
+
+        if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
+        {
+            //controller.Move()
+        }
+
+        //if (onHead)
+        {
+            
+        }
+        
+        //if (topJump)
+        {
+            
+            
+            
+        }
+        
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        
     }
 }
  
