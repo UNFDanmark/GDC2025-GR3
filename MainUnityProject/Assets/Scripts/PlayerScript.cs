@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public Transform cam;
     bool Gliding;
     public float speed = 6f;
+    public float currentspeed;
     public GameObject grounded;
     private isgrounded iGG;
     public float turnSmoothTime = 0.4f;
@@ -33,6 +34,7 @@ public class PlayerScript : MonoBehaviour
     {
         jumpAction.Enable();
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
+        currentspeed = speed;
     }
     // Update is called once per frame
     void Update()
@@ -64,7 +66,7 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
         Vector3 moveDir = cam.forward;
-        Vector3 finalMove = moveDir * (speed * Time.deltaTime * vertical);
+        Vector3 finalMove = moveDir * (currentspeed * Time.deltaTime * vertical);
         finalMove.y = PlayerVelo.y * Time.deltaTime;
         controller.Move(finalMove);
         
@@ -72,8 +74,22 @@ public class PlayerScript : MonoBehaviour
         
         if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
         {
-            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -2.0f * gravitySpeed);
+            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * gravitySpeed);
+            
         }
+
+        if (!iGG.isGrounded)
+        {
+            currentspeed += 2f;
+            currentspeed = Mathf.Clamp(currentspeed, speed, 8f);
+            gravitySpeed = -7f;
+        }
+        if (iGG.isGrounded)
+        {
+            currentspeed = speed;
+            gravitySpeed = -10f;
+        }
+        
         
         PlayerVelo.y += gravitySpeed * Time.deltaTime;
         
