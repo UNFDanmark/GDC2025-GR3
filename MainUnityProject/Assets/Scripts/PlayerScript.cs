@@ -18,9 +18,10 @@ public class PlayerScript : MonoBehaviour
     float _turnSmooth;
     public InputAction jumpAction; 
     private Vector3 PlayerVelo;
-    
+
+    public float jumpHeight = 5f;
     //gravity
-    public float gravitySpeed = 1f;
+    public float gravitySpeed = -9.81f;
    
    
     
@@ -28,7 +29,7 @@ public class PlayerScript : MonoBehaviour
    
     
     
-    void start()
+    void Start()
     {
         jumpAction.Enable();
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
@@ -48,34 +49,36 @@ public class PlayerScript : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
         
-        
         //Vector3 gravity = Vector3.down;
         //Vector3 movement = direction * speed + gravity * gravitySpeed;
         //transform.Translate(movement * Time.deltaTime, Space.World);    
         
-        
-        //test 
-        
-        //test
-        
         if (direction.magnitude >= 0.1f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooth, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = cam.forward;
-            controller.Move(moveDir * (speed * Time.deltaTime * vertical));
             
+
         }
 
-        PlayerVelo.y += gravitySpeed * Time.deltaTime;
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooth, turnSmoothTime);
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+        Vector3 moveDir = cam.forward;
+        Vector3 finalMove = moveDir * (speed * Time.deltaTime * vertical);
+        finalMove.y = PlayerVelo.y * Time.deltaTime;
+        controller.Move(finalMove);
+        
+        
         
         if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
         {
-            
+            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -2.0f * gravitySpeed);
         }
-
+        
+        PlayerVelo.y += gravitySpeed * Time.deltaTime;
+        
+        
+        
         //if (onHead)
         {
             
