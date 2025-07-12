@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -13,8 +16,16 @@ public class PlayerScript : MonoBehaviour
     private isgrounded iGG;
     public float turnSmoothTime = 0.4f;
     float _turnSmooth;
-    public InputAction jumpAction;
+    public InputAction jumpAction; 
+    private Vector3 PlayerVelo;
     
+    //gravity
+    public float gravitySpeed = 1f;
+   
+   
+    
+   
+   
     
     
     void start()
@@ -25,10 +36,27 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            
+        //simplified positions:
+        float yPosition = transform.position.y;
+        float xPosition = transform.position.x;
+        float zPosition = transform.position.z;  
+        //
+        
+        
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
+        
+        
+        //Vector3 gravity = Vector3.down;
+        //Vector3 movement = direction * speed + gravity * gravitySpeed;
+        //transform.Translate(movement * Time.deltaTime, Space.World);    
+        
+        
+        //test 
+        
+        //test
         
         if (direction.magnitude >= 0.1f)
         {
@@ -41,9 +69,11 @@ public class PlayerScript : MonoBehaviour
             
         }
 
+        PlayerVelo.y += gravitySpeed * Time.deltaTime;
+        
         if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
         {
-            //controller.Move()
+            
         }
 
         //if (onHead)
