@@ -28,7 +28,7 @@ public class attachplayer : MonoBehaviour
     {
         isInBox = false;
         Collider[] colliderS = new Collider[32];
-        int antal2 = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)*50,colliderS);
+        int antal2 = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)*5,colliderS);
         
 
         for (int i = 0; i < antal2; i++)
@@ -63,6 +63,7 @@ public class attachplayer : MonoBehaviour
                 if (pSS.jumpAction.WasPressedThisFrame())
                 {
                     pSS.EE = false;
+                    pSS.PlayerVelo.y = Mathf.Sqrt(pSS.jumpHeight * -3.0f * pSS.gravitySpeed);
                 }
             } 
             

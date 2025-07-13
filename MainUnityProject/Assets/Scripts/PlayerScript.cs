@@ -19,13 +19,14 @@ public class PlayerScript : MonoBehaviour
     public float turnSmoothTime = 0.4f;
     float _turnSmooth;
     public InputAction jumpAction; 
-    private Vector3 PlayerVelo;
+    public Vector3 PlayerVelo;
     public InputAction pressE;
     public float jumpHeight = 5f;
     //gravity
     public float gravitySpeed = -9.81f;
     public InputAction walk;
     public bool EE;
+    public float currentgravity;
     
    
    
@@ -33,11 +34,13 @@ public class PlayerScript : MonoBehaviour
     
     void Start()
     {
+        pressE.Enable();
         walk.Enable();
         jumpAction.Enable();
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         currentspeed = speed;
         EE = false;
+        currentgravity = gravitySpeed;
     }
     // Update is called once per frame
     void Update()
@@ -52,7 +55,7 @@ public class PlayerScript : MonoBehaviour
 
         Vector2 bevægelse = walk.ReadValue<Vector2>();
         float horizontal = bevægelse.x;
-        float vertical =bevægelse.y;
+        float vertical = bevægelse.y;
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
         
         //Vector3 gravity = Vector3.down;
@@ -75,7 +78,7 @@ public class PlayerScript : MonoBehaviour
         
         if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
         {
-            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * gravitySpeed);
+            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * currentgravity);
             
         }
 
@@ -83,16 +86,16 @@ public class PlayerScript : MonoBehaviour
         {
             currentspeed += 2f;
             currentspeed = Mathf.Clamp(currentspeed, speed, 8f);
-            gravitySpeed = -7f;
+            currentgravity = gravitySpeed;
         }
         if (iGG.isGrounded)
         {
             currentspeed = speed;
-            gravitySpeed = -10f;
+            currentgravity = gravitySpeed;
         }
         
         
-        PlayerVelo.y += gravitySpeed * Time.deltaTime;
+        PlayerVelo.y += currentgravity * Time.deltaTime;
         
         
         
