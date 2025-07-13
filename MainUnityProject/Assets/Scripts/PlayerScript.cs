@@ -26,7 +26,6 @@ public class PlayerScript : MonoBehaviour
     public float gravitySpeed = -9.81f;
     public InputAction walk;
     public bool EE;
-    public float currentgravity;
     
    
    
@@ -40,7 +39,6 @@ public class PlayerScript : MonoBehaviour
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         currentspeed = speed;
         EE = false;
-        currentgravity = gravitySpeed;
     }
     // Update is called once per frame
     void Update()
@@ -68,7 +66,7 @@ public class PlayerScript : MonoBehaviour
 
         Vector3 moveDir = cam.forward;
         Vector3 finalMove = moveDir * (currentspeed * Time.deltaTime * vertical);
-        print($"finalMove: {finalMove}, moveDir: {moveDir}, currentspeed: {currentspeed}, vertical: {vertical}");
+        //print($"finalMove: {finalMove}, moveDir: {moveDir}, currentspeed: {currentspeed}, vertical: {vertical}");
         finalMove.y = PlayerVelo.y * Time.deltaTime;
         controller.Move(finalMove);
 
@@ -78,7 +76,7 @@ public class PlayerScript : MonoBehaviour
         
         if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
         {
-            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * currentgravity);
+            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * gravitySpeed);
             
         }
 
@@ -86,16 +84,16 @@ public class PlayerScript : MonoBehaviour
         {
             currentspeed += 2f;
             currentspeed = Mathf.Clamp(currentspeed, speed, 8f);
-            currentgravity = gravitySpeed;
+            gravitySpeed = -7f;
         }
         if (iGG.isGrounded)
         {
             currentspeed = speed;
-            currentgravity = gravitySpeed;
+            gravitySpeed = -10f;
         }
         
         
-        PlayerVelo.y += currentgravity * Time.deltaTime;
+        PlayerVelo.y += gravitySpeed * Time.deltaTime;
         
         
         
