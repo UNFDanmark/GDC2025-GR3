@@ -807,6 +807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb6fc98f24b9994988c9335e2a73de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInBox: 0
 --- !u!65 &429545851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1469,8 +1470,75 @@ MonoBehaviour:
       m_Action: Jump
       m_Flags: 0
     m_Flags: 0
+  pressE:
+    m_Name: Press E
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f70cd9ad-da9f-44d2-b2db-ad10586ea0f4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: cf6899d0-3fe0-4d1f-b0eb-585a9e5fd57f
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Press E
+      m_Flags: 0
+    m_Flags: 0
   jumpHeight: 1
-  gravitySpeed: -10
+  gravitySpeed: -1
+  walk:
+    m_Name: Walk
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 09a36f63-2f6c-4483-a32e-ca53d492f0e8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 49d763f1-6584-4b47-87cd-33b30e66abde
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 4
+    - m_Name: up
+      m_Id: bbb76aef-c250-4d38-b6e0-60f75f7d2930
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 275d8336-a55d-45cc-907e-d8642836b4b7
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 8
+    - m_Name: left
+      m_Id: c34ff39b-5183-4145-a7b6-09565a652313
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 8
+    - m_Name: right
+      m_Id: ef4766de-8b7d-4d6b-b7e4-2079251a823f
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Walk
+      m_Flags: 8
+    m_Flags: 0
+  EE: 0
 --- !u!4 &1701546288
 Transform:
   m_ObjectHideFlags: 0
@@ -1560,7 +1628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0360a5462d0ddb4ca9afbefc155ff6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headpos: {x: 0, y: 0, z: 0}
 --- !u!1 &1741933469
 GameObject:
   m_ObjectHideFlags: 0
