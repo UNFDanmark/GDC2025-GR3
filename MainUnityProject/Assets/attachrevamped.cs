@@ -2,23 +2,31 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class attachplayer : MonoBehaviour
+public class attachrevamped : MonoBehaviour
 {
 
-    
+
+
+
+
+    public Transform newParent;
+    public Transform newParent2;
+    public Transform child;
     public bool isInBox;
     private GameObject player1;
     PlayerScript pSS;
-    
+    private GameObject Human;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         player1 = GameObject.FindWithTag("GameController");
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
-        pSS.isAttached = false;
+        Human = GameObject.FindWithTag("Human");
         
+        newParent = player1.transform;
+        newParent2 = Human.transform;
+
     }
 
 
@@ -54,15 +62,18 @@ public class attachplayer : MonoBehaviour
             
             if (pSS.EE == true)
             {
+                for (int i = 0; i < 1; i++)
+                {
+                    player1.transform.position = transform.position;
+                    player1.transform.rotation = transform.rotation; 
+                }
+                TransferChild(newParent, child);
                 
-                player1.transform.position = transform.position;
-                player1.transform.rotation = transform.rotation;
-                pSS.isAttached = true;
                 if (pSS.jumpAction.WasPressedThisFrame())
                 {
+                    TransferChild(newParent2, child);
                     pSS.EE = false;
                     pSS.PlayerVelo.y = Mathf.Sqrt(pSS.jumpHeight * -3.0f * pSS.gravitySpeed);
-                    pSS.isAttached = false;
                 }
             } 
             
@@ -75,6 +86,10 @@ public class attachplayer : MonoBehaviour
     }
 
     
-    
+    public void TransferChild(Transform newParent, Transform child)
+    {
+        child.SetParent(newParent);
+        
+    }
     
 }

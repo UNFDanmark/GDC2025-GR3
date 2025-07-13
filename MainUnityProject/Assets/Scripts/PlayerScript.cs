@@ -17,7 +17,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject grounded;
     private isgrounded iGG;
     public float turnSmoothTime = 0.4f;
-    float _turnSmooth;
+    public float _turnSmooth;
     public InputAction jumpAction; 
     public Vector3 PlayerVelo;
     public InputAction pressE;
@@ -26,8 +26,9 @@ public class PlayerScript : MonoBehaviour
     public float gravitySpeed = -9.81f;
     public InputAction walk;
     public bool EE;
-    
+    public bool isAttached;
    
+    
    
     
     
@@ -49,51 +50,55 @@ public class PlayerScript : MonoBehaviour
         float zPosition = transform.position.z;  
         //
 
-
-
-        Vector2 bevægelse = walk.ReadValue<Vector2>();
-        float horizontal = bevægelse.x;
-        float vertical = bevægelse.y;
-        Vector3 direction = new Vector3(horizontal, 0f, vertical);
-        
-        //Vector3 gravity = Vector3.down;
-        //Vector3 movement = direction * speed + gravity * gravitySpeed;
-        //transform.Translate(movement * Time.deltaTime, Space.World);    
-        
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooth, turnSmoothTime);
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-        Vector3 moveDir = cam.forward;
-        Vector3 finalMove = moveDir * (currentspeed * Time.deltaTime * vertical);
-        //print($"finalMove: {finalMove}, moveDir: {moveDir}, currentspeed: {currentspeed}, vertical: {vertical}");
-        finalMove.y = PlayerVelo.y * Time.deltaTime;
-        controller.Move(finalMove);
-
-        
-        
-        
-        
-        if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
+        if (!isAttached)
         {
-            PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * gravitySpeed);
+            Vector2 bevægelse = walk.ReadValue<Vector2>();
+            float horizontal = bevægelse.x;
+            float vertical = bevægelse.y;
+            Vector3 direction = new Vector3(horizontal, 0f, vertical);
+        
+            //Vector3 gravity = Vector3.down;
+            //Vector3 movement = direction * speed + gravity * gravitySpeed;
+            //transform.Translate(movement * Time.deltaTime, Space.World);    
+        
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooth, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = cam.forward;
+            Vector3 finalMove = moveDir * (currentspeed * Time.deltaTime * vertical);
+            //print($"finalMove: {finalMove}, moveDir: {moveDir}, currentspeed: {currentspeed}, vertical: {vertical}");
+            finalMove.y = PlayerVelo.y * Time.deltaTime;
+            controller.Move(finalMove);
+
+        
+        
+        
+        
+            if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
+            {
+                PlayerVelo.y = Mathf.Sqrt(jumpHeight * -3.0f * gravitySpeed);
+            
+            }
+
+            if (!iGG.isGrounded)
+            {
+                currentspeed += 2f;
+                currentspeed = Mathf.Clamp(currentspeed, speed, 8f);
+                gravitySpeed = -7f;
+            }
+            if (iGG.isGrounded)
+            {
+                currentspeed = speed;
+                gravitySpeed = -10f;
+            }
+        
+        
+            PlayerVelo.y += gravitySpeed * Time.deltaTime;
+            PlayerVelo.y = Mathf.Clamp(PlayerVelo.y,-10f,20f);
             
         }
 
-        if (!iGG.isGrounded)
-        {
-            currentspeed += 2f;
-            currentspeed = Mathf.Clamp(currentspeed, speed, 8f);
-            gravitySpeed = -7f;
-        }
-        if (iGG.isGrounded)
-        {
-            currentspeed = speed;
-            gravitySpeed = -10f;
-        }
-        
-        
-        PlayerVelo.y += gravitySpeed * Time.deltaTime;
         
         
         
