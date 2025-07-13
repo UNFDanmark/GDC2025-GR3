@@ -160,7 +160,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8175189}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 58a8fee0c5365444abc7152d7a041535, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1373,7 +1373,7 @@ Transform:
   m_GameObject: {fileID: 1586442373}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1899999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1428,7 +1428,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 2D Vector
       m_Id: 5dc943b2-e3fa-4a20-b1e1-2cc97f158d76
-      m_Path: 2DVector
+      m_Path: 2DVector(mode=1)
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -1469,6 +1469,8 @@ MonoBehaviour:
     m_Flags: 0
   controller1: {fileID: 1586442377}
   PlayerVelo1: {x: 0, y: 0, z: 0}
+  timer: 1
+  currentimer: 0
 --- !u!143 &1586442377
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1529,7 +1531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1701546289}
   cam: {fileID: 1701546288}
-  speed: 6
+  speed: 4
   currentspeed: 0
   grounded: {fileID: 2120824001}
   turnSmoothTime: 0.4
@@ -1581,7 +1583,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 2D Vector
       m_Id: b4bd9573-9f08-4e32-97b4-30d599a99295
-      m_Path: 2DVector
+      m_Path: 2DVector(mode=1)
       m_Interactions: 
       m_Processors: 
       m_Groups: 
