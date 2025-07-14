@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.36618, y: 0, z: 5.36382}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 3, y: 1, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2023117070}
@@ -808,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInBox: 0
+  isjumping: 0
 --- !u!65 &429545851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1530,11 +1531,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1701546289}
-  cam: {fileID: 1701546288}
+  myState: 0
   speed: 4
   currentspeed: 0
   grounded: {fileID: 2120824001}
-  turnSmoothTime: 0.4
+  turnSmoothTimeGrounded: 0.4
+  turnSmoothTimeGliding: 0.4
   _turnSmooth: 0
   jumpAction:
     m_Name: Jump
@@ -1623,14 +1625,11 @@ MonoBehaviour:
       m_Flags: 8
     m_Flags: 0
   EE: 0
-  isAttached: 0
-  glidespeed_growth: 0
-  glidemax: 12
-  glideTime: 0
   t: 0
   t2: 0
-  glide: 0
+  raise: 0
   glideSpeed: 0
+  baseGlideSpeed: 7
 --- !u!4 &1701546288
 Transform:
   m_ObjectHideFlags: 0
