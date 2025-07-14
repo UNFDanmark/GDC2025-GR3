@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Human
   - hUMANcontroller
+  - image
   layers:
   - Default
   - TransparentFX
