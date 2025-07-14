@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     
     public Transform cam;
     bool Gliding;
-    public float speed = 6f;
+    public float speed = 4f;
     public float currentspeed;
     public GameObject grounded;
     private isgrounded iGG;
@@ -27,11 +27,14 @@ public class PlayerScript : MonoBehaviour
     public InputAction walk;
     public bool EE;
     public bool isAttached;
-   
-    
-   
-    
-    
+    public float glidespeed_growth;
+    public float glidemax = 3.5f;
+    public float glideTime;
+    public float t;
+    public float t2;
+    public float t3;
+    public bool glide;
+    public float glideSpeed;
     void Start()
     {
         pressE.Enable();
@@ -40,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         currentspeed = speed;
         EE = false;
+        glide = false;
     }
     // Update is called once per frame
     void Update()
@@ -56,17 +60,14 @@ public class PlayerScript : MonoBehaviour
             float horizontal = bevægelse.x;
             float vertical = bevægelse.y;
             Vector3 direction = new Vector3(horizontal, 0f, vertical);
-        
-            //Vector3 gravity = Vector3.down;
-            //Vector3 movement = direction * speed + gravity * gravitySpeed;
-            //transform.Translate(movement * Time.deltaTime, Space.World);    
-        
+            
+            
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmooth, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = cam.forward;
-            Vector3 finalMove = moveDir * (currentspeed * Time.deltaTime * vertical);
+            Vector3 finalMove = moveDir * ((currentspeed) * Time.deltaTime * vertical);
             //print($"finalMove: {finalMove}, moveDir: {moveDir}, currentspeed: {currentspeed}, vertical: {vertical}");
             finalMove.y = PlayerVelo.y * Time.deltaTime;
             controller.Move(finalMove);
@@ -81,16 +82,30 @@ public class PlayerScript : MonoBehaviour
             
             }
 
-            if (!iGG.isGrounded)
+            if (!iGG.isGrounded && jumpAction.WasPressedThisFrame())
             {
-                currentspeed += 2f;
-                currentspeed = Mathf.Clamp(currentspeed, speed, 8f);
-                gravitySpeed = -7f;
+                glide = true;
+                
             }
+
+            if (glide)
+            {
+                glideSpeed = 2.5f;
+                gravitySpeed = -6f;
+                //transform.forward
+                currentspeed =  speed+glideSpeed;                                                                                                                                                                 
+                
+                
+            }   
             if (iGG.isGrounded)
             {
+                glideSpeed = 0f;
+                glidespeed_growth = 0f;
+                t = 0f;
+                t2 = 0f;
+                glide = false;
                 currentspeed = speed;
-                gravitySpeed = -10f;
+                gravitySpeed =-10f;
             }
         
         
