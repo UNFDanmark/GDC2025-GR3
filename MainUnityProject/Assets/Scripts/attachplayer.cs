@@ -18,7 +18,7 @@ public class attachplayer : MonoBehaviour
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         player1 = GameObject.FindWithTag("GameController");
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
-        pSS.isAttached = false;
+        
         
     }
 
@@ -40,16 +40,7 @@ public class attachplayer : MonoBehaviour
             
         }
 
-        if (isjumping)
-        {
-            pSS.t += Time.deltaTime*2;
-            pSS.t = Mathf.Clamp(pSS.t, 0f, 1f);
-            pSS.currentspeed = Mathf.Lerp(pSS.speed + 2f, pSS.speed + 1f, pSS.t);
-            if (iGG.isGrounded)
-            {
-                isjumping = false;
-            }
-        }
+      
 
         
     }
@@ -71,15 +62,14 @@ public class attachplayer : MonoBehaviour
                 
                 player1.transform.position = transform.position;
                 player1.transform.rotation = transform.rotation;
-                pSS.isAttached = true;
+                pSS.myState = PlayerScript.State.ATTACHED;
                 if (pSS.jumpAction.WasPressedThisFrame())
                 {
                     pSS.EE = false;
                     pSS.PlayerVelo.y = Mathf.Sqrt(pSS.jumpHeight * -3.0f * pSS.gravitySpeed);
-                    pSS.currentspeed += 3f;
-                    isjumping = true;
-                    
-                    pSS.isAttached = false;
+                    pSS.currentspeed += 1.5f;
+
+                    pSS.myState = PlayerScript.State.NOT_ATTACHED;
                 }
             } 
             

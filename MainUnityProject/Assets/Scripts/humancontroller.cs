@@ -30,26 +30,24 @@ public class humancontroller : MonoBehaviour
     void Update()
     {
         
-        if (pSS.isAttached)
+        if (pSS.myState == PlayerScript.State.ATTACHED)
         {
             currentimer -= Time.deltaTime;
         }
-        if (pSS.isAttached && currentimer <=0)
+        if (pSS.myState == PlayerScript.State.ATTACHED && currentimer <=0)
         {
-            
+            pSS.gravitySpeed = -10f;
             pSS.currentspeed = 3f;
             Vector2 bevægelse1 = walk1.ReadValue<Vector2>();
-            float horizontal1 = bevægelse1.x;
-            float vertical1 = bevægelse1.y;
-            Vector3 direction1 = new Vector3(horizontal1, 0f, vertical1);
+            Vector3 direction1 = new Vector3(bevægelse1.x, 0f, bevægelse1.y);
         
             float targetAngle1 = Mathf.Atan2(direction1.x, direction1.z) * Mathf.Rad2Deg + transform.rotation.eulerAngles.y;
-            float angle1 = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle1, ref pSS._turnSmooth, pSS.turnSmoothTime);
+            float angle1 = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle1, ref pSS._turnSmooth, pSS.turnSmoothTimeGrounded);
             transform.rotation = Quaternion.Euler(0f, angle1, 0f);
 
-            Vector3 moveDir1 = pSS.cam.forward;
-            Vector3 finalMove1 = moveDir1 * (pSS.currentspeed * Time.deltaTime * vertical1);
-            print($"finalMove: {finalMove1}, moveDir: {moveDir1}, currentspeed: {pSS.currentspeed}, vertical: {vertical1}");
+            Vector3 moveDir1 = pSS.transform.forward;
+            Vector3 finalMove1 = moveDir1 * (pSS.currentspeed * Time.deltaTime * bevægelse1.y);
+            //print($"finalMove: {finalMove1}, moveDir: {moveDir1}, currentspeed: {pSS.currentspeed}, vertical: {bevægelse1.y}");
             finalMove1.y = PlayerVelo1.y * Time.deltaTime;
             controller1.Move(finalMove1);
         
@@ -61,7 +59,7 @@ public class humancontroller : MonoBehaviour
 
         }
 
-        if (!pSS.isAttached)
+        if (pSS.myState == PlayerScript.State.NOT_ATTACHED)
         {
             currentimer = timer;
         }
