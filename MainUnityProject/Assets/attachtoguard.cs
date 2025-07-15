@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class attachplayer : MonoBehaviour
+public class attachtoguard : MonoBehaviour
 {
 
     
@@ -11,12 +11,10 @@ public class attachplayer : MonoBehaviour
     PlayerScript pSS;
     public bool isjumping;
     private isgrounded iGG;
-    public bool isattached;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        isattached = false;
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         player1 = GameObject.FindWithTag("GameController");
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
@@ -59,15 +57,14 @@ public class attachplayer : MonoBehaviour
                 pSS.EE = true;
             }
             
-            if (pSS.EE == true  )
+            if (pSS.EE == true)
             {
-                isattached = true;
+                
                 player1.transform.position = transform.position;
-                player1.transform.rotation = transform.rotation * Quaternion.AngleAxis(90, Vector3.up);
-                pSS.myState = PlayerScript.State.ATTACHED;
+                player1.transform.rotation = transform.rotation;
+                pSS.myState = PlayerScript.State.ATTACHEDGUARD;
                 if (pSS.jumpAction.WasPressedThisFrame())
                 {
-                    isattached = false;
                     pSS.EE = false;
                     pSS.PlayerVelo.y = Mathf.Sqrt(pSS.jumpHeight * -3.0f * pSS.gravitySpeed);
                     pSS.currentspeed += 1.5f;

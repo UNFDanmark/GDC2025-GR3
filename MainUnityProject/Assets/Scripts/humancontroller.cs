@@ -5,36 +5,38 @@ using UnityEngine.InputSystem;
 
 public class humancontroller : MonoBehaviour
 {
-    
-    
+
+
     public InputAction walk1;
     PlayerScript pSS;
     public CharacterController controller1;
     public Vector3 PlayerVelo1;
-
+    public attachplayer playerattach;
     public float timer = 1f;
 
     public float currentimer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-     
+        playerattach = GetComponentInChildren<attachplayer>();
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
         walk1.Enable();
         currentimer = timer;
 
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (pSS.myState == PlayerScript.State.ATTACHED)
+
+        if ((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) && playerattach.isattached )
         {
             currentimer -= Time.deltaTime;
         }
-        if (pSS.myState == PlayerScript.State.ATTACHED && currentimer <=0)
+        if (((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) &&
+             currentimer <= 0) && playerattach.isattached)
         {
             pSS.gravitySpeed = -10f;
             pSS.currentspeed = 3f;

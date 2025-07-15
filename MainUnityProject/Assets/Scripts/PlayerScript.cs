@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
 
     public enum State
     {
-        NOT_ATTACHED,GLIDING, ATTACHED, ATTACHNONHUMAN
+        NOT_ATTACHED,GLIDING, ATTACHED, ATTACHNONHUMAN, ATTACHEDGUARD
     }
     
     public CharacterController controller;

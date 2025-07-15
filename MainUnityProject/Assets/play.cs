@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class play : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class play : MonoBehaviour
     void Start()
     {
         Button btn = startButton.GetComponent<Button>();
+        btn.onClick.AddListener(PlayNow);
         //btn.clicked(PlayNow());
     }
 
@@ -23,7 +24,7 @@ public class play : MonoBehaviour
     public void PlayNow()
     {
         
-        SceneManager.LoadScene("Programmering");
+        SceneManager.LoadScene("GAME");
     }
     
 }
