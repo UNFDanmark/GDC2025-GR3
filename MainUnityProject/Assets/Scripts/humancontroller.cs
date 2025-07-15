@@ -45,7 +45,7 @@ public class humancontroller : MonoBehaviour
             float angle1 = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle1, ref pSS._turnSmooth, pSS.turnSmoothTimeGrounded);
             transform.rotation = Quaternion.Euler(0f, angle1, 0f);
 
-            Vector3 moveDir1 = pSS.transform.forward;
+            Vector3 moveDir1 = transform.forward;
             Vector3 finalMove1 = moveDir1 * (pSS.currentspeed * Time.deltaTime * bevægelse1.y);
             //print($"finalMove: {finalMove1}, moveDir: {moveDir1}, currentspeed: {pSS.currentspeed}, vertical: {bevægelse1.y}");
             finalMove1.y = PlayerVelo1.y * Time.deltaTime;
