@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,8 +14,8 @@ public class humancontroller : MonoBehaviour
     public Vector3 PlayerVelo1;
     public attachplayer playerattach;
     public float timer = 1f;
-
     public float currentimer;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +24,6 @@ public class humancontroller : MonoBehaviour
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
         walk1.Enable();
         currentimer = timer;
-
     }
 
 
@@ -31,14 +31,15 @@ public class humancontroller : MonoBehaviour
     void Update()
     {
 
-        if ((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) && playerattach.isattached )
+        if ((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) && (playerattach.isattached))
         {
             currentimer -= Time.deltaTime;
         }
         if (((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) &&
-             currentimer <= 0) && playerattach.isattached)
+             currentimer <= 0) && (playerattach.isattached))
         {
             pSS.gravitySpeed = -10f;
+            
             pSS.currentspeed = 3f;
             Vector2 bevægelse1 = walk1.ReadValue<Vector2>();
             Vector3 direction1 = new Vector3(bevægelse1.x, 0f, bevægelse1.y);

@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 2.162, z: 0}
-  m_LocalScale: {x: 0.2943129, y: 0.29431283, z: 0.2943129}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8852485741570994645}
@@ -53,7 +53,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 3, z: 5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6635237126415183744
 MonoBehaviour:
@@ -67,8 +67,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb6fc98f24b9994988c9335e2a73de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attachable: 0
   isInBox: 0
   isjumping: 0
+  isattached: 0
+  isGuard: 0
 --- !u!1 &3605163967097230890
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +547,9 @@ MonoBehaviour:
     m_Flags: 0
   controller1: {fileID: 420150652170678714}
   PlayerVelo1: {x: 0, y: 0, z: 0}
+  playerattach: {fileID: 0}
   timer: 1
+  atg: {fileID: 0}
   currentimer: 0
 --- !u!1 &7224236157201226833
 GameObject:
@@ -683,7 +688,7 @@ RectTransform:
   m_GameObject: {fileID: 7872179201992006964}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3977437, y: 3.397745, z: 3.3977437}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3755337743293491280}
