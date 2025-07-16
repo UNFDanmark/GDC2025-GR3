@@ -31,6 +31,7 @@ public class Enternewscreen : MonoBehaviour
         {
            deathscreen.SetActive(true);
             pSS.enabled = false;
+            
 
         } else if (colliderHit.gameObject.CompareTag("win"))
         {
