@@ -11,6 +11,8 @@ TagManager:
   - glassDOOR
   - GUARD
   - CART
+  - win
+  - DEADLY
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - isgrounded
-  - 
+  - ignore
   - 
   - 
   - 

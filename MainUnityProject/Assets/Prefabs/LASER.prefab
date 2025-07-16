@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3258162225433205491}
   m_Layer: 0
   m_Name: LASER
-  m_TagString: Untagged
+  m_TagString: DEADLY
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3014582290557034520}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.57873267, w: 0.81551737}
+  m_LocalRotation: {x: 0, y: 0, z: -0.57873327, w: 0.81551695}
   m_LocalPosition: {x: 12.5, y: 1.91, z: 30.17}
   m_LocalScale: {x: 0.13026, y: 12.759706, z: 0.13026}
   m_ConstrainProportionsScale: 0

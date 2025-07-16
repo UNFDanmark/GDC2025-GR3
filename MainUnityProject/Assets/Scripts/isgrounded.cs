@@ -1,18 +1,19 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class isgrounded : MonoBehaviour
 {
 
     public bool isGrounded;
-  
+    public LayerMask ignoreLayer;
 
     // Update is called once per frame
     void Update()
     {
         isGrounded = false;
         Collider[] colliders = new Collider[2];
-        int antal = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)/2,colliders);
+        int antal = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)/2,colliders,Quaternion.identity,~ignoreLayer );
         
 
         for (int i = 0; i < antal; i++)

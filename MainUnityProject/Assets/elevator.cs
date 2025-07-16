@@ -18,10 +18,10 @@ public class elevator : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("high other");
+        
         if (other.CompareTag("CART"))
         {
-            print("hej cart");
+            
             SceneManager.LoadScene("VAULT");
         }
         

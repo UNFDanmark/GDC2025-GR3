@@ -17,7 +17,7 @@ public class attachnonhuman : MonoBehaviour
     {
         isInBox = false;
         Collider[] colliderS = new Collider[32];
-        int antal2 = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)*5,colliderS);
+        int antal2 = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)*10,colliderS);
         
 
         for (int i = 0; i < antal2; i++)
