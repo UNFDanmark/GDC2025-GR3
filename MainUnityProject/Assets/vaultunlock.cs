@@ -1,18 +1,19 @@
 using UnityEngine;
 
-public class opendoor : MonoBehaviour
+public class vaultunlock : MonoBehaviour
 {   
     private GameObject player1;
     
-    public GameObject glassdoor;
+    
     PlayerScript pSS;
     public bool isInBox;
+    public GameObject quicktimecanvas;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         player1 = GameObject.FindWithTag("GameController");
-        
+        quicktimecanvas.SetActive(false);
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
         
     }
@@ -28,9 +29,10 @@ public class opendoor : MonoBehaviour
         for (int i = 0; i < antal2; i++)
         {
             Collider currentCollider = colliderS[i];
-            if (currentCollider.CompareTag("GUARD"))
+            if (currentCollider.CompareTag("GameController"))
             {
                 isInBox = true;
+                print("it worked btw ts");
             }
             
         }
@@ -44,10 +46,7 @@ public class opendoor : MonoBehaviour
         {
             if (pSS.pressE.WasPressedThisFrame())
             {
-                if (pSS.myState == PlayerScript.State.ATTACHEDGUARD)
-                {
-                    Destroy(glassdoor);
-                }
+               quicktimecanvas.SetActive(true);
 
             }
             
