@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class humancontroller : MonoBehaviour
 {
 
-
+    public human1Walk navmeshscript;
     public InputAction walk1;
     PlayerScript pSS;
     public CharacterController controller1;
@@ -20,8 +20,10 @@ public class humancontroller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         playerattach = GetComponentInChildren<attachplayer>();
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
+        navmeshscript = GetComponent<human1Walk>();
         walk1.Enable();
         currentimer = timer;
     }
@@ -34,6 +36,7 @@ public class humancontroller : MonoBehaviour
         if ((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) && (playerattach.isattached))
         {
             currentimer -= Time.deltaTime;
+            navmeshscript.agent.enabled = false;
         }
         if (((pSS.myState == PlayerScript.State.ATTACHED || pSS.myState == PlayerScript.State.ATTACHEDGUARD) &&
              currentimer <= 0) && (playerattach.isattached))
@@ -65,6 +68,7 @@ public class humancontroller : MonoBehaviour
         if (pSS.myState == PlayerScript.State.NOT_ATTACHED)
         {
             currentimer = timer;
+            navmeshscript.agent.enabled = true;
         }
         
     }
