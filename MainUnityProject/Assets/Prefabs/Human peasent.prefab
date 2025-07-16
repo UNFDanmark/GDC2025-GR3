@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5590906944530790705}
   - component: {fileID: 9073635557578948339}
   - component: {fileID: 6635237126415183744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 468037552512480335}
   - component: {fileID: 3183309108126486929}
   - component: {fileID: 7513900372526023455}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 886529456797205098}
   - component: {fileID: 3417704727637003835}
   - component: {fileID: 7924550879418184910}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: "sv\xE6rd"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 1769432871590942799}
   - component: {fileID: 4054575389605491418}
   - component: {fileID: 6797054845577168763}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,8 @@ GameObject:
   - component: {fileID: 7645598971962835539}
   - component: {fileID: 420150652170678714}
   - component: {fileID: 8688105818133099054}
-  m_Layer: 0
+  - component: {fileID: 8126607425447437720}
+  m_Layer: 8
   m_Name: Human peasent
   m_TagString: hUMANcontroller
   m_Icon: {fileID: 0}
@@ -550,6 +551,28 @@ MonoBehaviour:
   playerattach: {fileID: 0}
   timer: 1
   currentimer: 0
+--- !u!195 &8126607425447437720
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517129422497377756}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7224236157201226833
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +585,7 @@ GameObject:
   - component: {fileID: 4305365511692437933}
   - component: {fileID: 2043778599615815202}
   - component: {fileID: 1370326609366002470}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +694,7 @@ GameObject:
   - component: {fileID: 1032874017487821684}
   - component: {fileID: 4413676670687416347}
   - component: {fileID: 4556759641475923048}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: buttoncanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +810,7 @@ GameObject:
   - component: {fileID: 8956234236759479691}
   - component: {fileID: 5447921066015593070}
   - component: {fileID: 5451457403718808210}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Fjende
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +896,7 @@ GameObject:
   - component: {fileID: 3755337743293491280}
   - component: {fileID: 2439597848080060666}
   - component: {fileID: 6972715258012977525}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
