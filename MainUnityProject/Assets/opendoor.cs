@@ -7,6 +7,7 @@ public class opendoor : MonoBehaviour
     public GameObject glassdoor;
     PlayerScript pSS;
     public bool isInBox;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

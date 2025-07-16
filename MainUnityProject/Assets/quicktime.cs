@@ -7,25 +7,41 @@ using UnityEngine.UI;
 
 public class quicktime : MonoBehaviour
 {
+    public float vaultspeed = 4;
     public TMP_Text textbox;
     public RectTransform tack;
     int direction;
     public float startspeed = 300;
     public float speed;
     public int hitstotal = 4;
-    int hitsleft;
-    bool mousewaspressed;
+    int hitsleft = 4;
+    
     
     //getting canvas
     public GameObject quicktimecanvas;
+
+    public Transform target;
+    public Transform vault;
+    
     
     
     public UnityEngine.UI.Button HitButton;
     
     float x;
+
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        vaultspeed = 10;
+        hitsleft = hitstotal;
+       /* CanvasGroup group = canvas.GetComponent<CanvasGroup>();
+        if (group == null)
+        {
+            group = canvas.gameObject.AddComponent<CanvasGroup>();
+        }
+        */
+        
         direction = 1;
         hitsleft = hitstotal;
         
@@ -37,7 +53,7 @@ public class quicktime : MonoBehaviour
     void Update()
     {
         
-       
+       float step = vaultspeed * Time.deltaTime;
         
         if (tack.anchoredPosition.x >= 500)
         {
@@ -53,9 +69,18 @@ public class quicktime : MonoBehaviour
         
       x = tack.anchoredPosition.x;
 
-      if (hitsleft <= 0)
+      if (hitsleft <=0)
       {
-          quicktimecanvas.SetActive(false);
+
+          //vault.position = new Vector3(100, 100, 100);
+         
+          vault.position = Vector3.MoveTowards(vault.position, target.position, step);
+
+
+          if (vault.position == target.position)
+          {
+              quicktimecanvas.SetActive(false);
+          }
           
       }
 
