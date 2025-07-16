@@ -11,15 +11,15 @@ public class attachtoguard : MonoBehaviour
     PlayerScript pSS;
     public bool isjumping;
     private isgrounded iGG;
-    
+    public bool isattachedGUARD;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         player1 = GameObject.FindWithTag("GameController");
         pSS = GameObject.FindWithTag("GameController").GetComponent<PlayerScript>();
-        
-        
+        isattachedGUARD = false;
+
     }
 
 
@@ -59,12 +59,13 @@ public class attachtoguard : MonoBehaviour
             
             if (pSS.EE == true)
             {
-                
+                isattachedGUARD = true;
                 player1.transform.position = transform.position;
-                player1.transform.rotation = transform.rotation;
+                player1.transform.rotation = transform.rotation* Quaternion.AngleAxis(90, Vector3.up);
                 pSS.myState = PlayerScript.State.ATTACHEDGUARD;
                 if (pSS.jumpAction.WasPressedThisFrame())
                 {
+                    isattachedGUARD = false;
                     pSS.EE = false;
                     pSS.PlayerVelo.y = Mathf.Sqrt(pSS.jumpHeight * -3.0f * pSS.gravitySpeed);
                     pSS.currentspeed += 1.5f;
