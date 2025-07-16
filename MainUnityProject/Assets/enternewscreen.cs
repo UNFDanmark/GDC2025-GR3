@@ -24,8 +24,8 @@ public class Enternewscreen : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit colliderHit)
     {
-        print(colliderHit.gameObject);
-        print(colliderHit.gameObject.tag);
+        //print(colliderHit.gameObject);
+        //print(colliderHit.gameObject.tag);
         
         if (colliderHit.gameObject.CompareTag("DEADLY"))
         {
