@@ -9,6 +9,8 @@ TagManager:
   - hUMANcontroller
   - image
   - glassDOOR
+  - GUARD
+  - CART
   layers:
   - Default
   - TransparentFX

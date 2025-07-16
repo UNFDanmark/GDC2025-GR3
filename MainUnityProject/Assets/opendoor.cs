@@ -27,7 +27,7 @@ public class opendoor : MonoBehaviour
         for (int i = 0; i < antal2; i++)
         {
             Collider currentCollider = colliderS[i];
-            if (currentCollider.CompareTag("GameController"))
+            if (currentCollider.CompareTag("GUARD"))
             {
                 isInBox = true;
             }
@@ -43,19 +43,12 @@ public class opendoor : MonoBehaviour
         {
             if (pSS.pressE.WasPressedThisFrame())
             {
-                pSS.EE = true;
-
-            }
-            
-            if (pSS.EE)
-            {
                 if (pSS.myState == PlayerScript.State.ATTACHEDGUARD)
                 {
-                    DestroyObject(glassdoor);
+                    Destroy(glassdoor);
                 }
+
             }
-            
-            
             
         }
         
