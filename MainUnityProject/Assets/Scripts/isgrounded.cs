@@ -12,7 +12,7 @@ public class isgrounded : MonoBehaviour
     void Update()
     {
         isGrounded = false;
-        Collider[] colliders = new Collider[2];
+        Collider[] colliders = new Collider[5];
         int antal = Physics.OverlapBoxNonAlloc(transform.position, (transform.localScale)/2,colliders,Quaternion.identity,~ignoreLayer );
         
 

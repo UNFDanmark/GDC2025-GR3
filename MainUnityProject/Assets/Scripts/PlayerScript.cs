@@ -53,7 +53,7 @@ public class PlayerScript : MonoBehaviour
         iGG = GameObject.Find("isGrounded").GetComponent<isgrounded>();
         currentspeed = speed;
         EE = false;
-        
+        myState = State.NOT_ATTACHED;
     }
     // Update is called once per frame
     void Update()

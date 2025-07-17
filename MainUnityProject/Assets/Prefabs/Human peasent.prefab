@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2951ab62f16fe948b500f42e78ab6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navmeshscript: {fileID: 0}
   walk1:
     m_Name: Walk 1
     m_Type: 0
