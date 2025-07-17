@@ -34,8 +34,9 @@ public class PlayerScript : MonoBehaviour
     public float jumpHeight = 5f;
     public float gravitySpeed = -9.81f;
 
-    #endregion  
-    
+    #endregion
+
+    public Animator animator;
     public InputAction walk;
     public bool EE;
     public float t;

@@ -33,7 +33,7 @@ public class vaultebutton : MonoBehaviour
     
     void Update()
     {
-        if ( ap.isInBox){
+        if (ap.isInBox){
                 
             image.SetActive(true);
         }
