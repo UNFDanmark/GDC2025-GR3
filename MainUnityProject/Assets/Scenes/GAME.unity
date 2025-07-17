@@ -9252,6 +9252,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: smol table (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1187570598976851691, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1959287417064576081, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -15420,6 +15424,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: smol table (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1187570598976851691, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1959287417064576081, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.71
@@ -15713,6 +15721,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ec53c5beb1505294ca8ce4c7b4292a97, type: 3}
       propertyPath: m_Name
       value: three pair chair 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ec53c5beb1505294ca8ce4c7b4292a97, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17182,6 +17194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: trash can
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 36084f56865d7154089bd7fe253f90e3, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17622,6 +17638,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ac7aefe6414c86d4d8f8b6140fd9f487, type: 3}
       propertyPath: m_Name
       value: one chair (ONE PIEECCCEEEE) (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac7aefe6414c86d4d8f8b6140fd9f487, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19354,6 +19374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: smol table (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1187570598976851691, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 1959287417064576081, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.71
@@ -19694,6 +19718,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1735794066194691734, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
+      propertyPath: m_BaseOffset
+      value: 1.33
+      objectReference: {fileID: 0}
     - target: {fileID: 1889044061148028104, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -19715,10 +19743,20 @@ PrefabInstance:
       value: 1.0347418
       objectReference: {fileID: 0}
     - target: {fileID: 7650609505296853258, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650609505296853258, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8688105818133099054, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
+      propertyPath: playerattach
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1735794066194691734, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
+    - {fileID: 7650609505296853258, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1489137652984648216, guid: 1983c2cf71e1c144fa61d21b9440b4ca, type: 3}
@@ -23395,7 +23433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1613489725
 Transform:
   m_ObjectHideFlags: 0
@@ -25670,7 +25708,7 @@ GameObject:
   - component: {fileID: 1892164044}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29432,6 +29470,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5590906944530790705, guid: 5fe4b1e588adfbf4fa53dafb0d80a797, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0003586873
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590906944530790705, guid: 5fe4b1e588adfbf4fa53dafb0d80a797, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.37
+      objectReference: {fileID: 0}
     - target: {fileID: 6517129422497377756, guid: 5fe4b1e588adfbf4fa53dafb0d80a797, type: 3}
       propertyPath: m_Name
       value: Guard
@@ -29812,6 +29858,10 @@ PrefabInstance:
     - target: {fileID: 1187570598976851691, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
       propertyPath: m_Name
       value: smol table (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187570598976851691, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 1959287417064576081, guid: f55e9eb9a1fd1e644b3679da6d8f8806, type: 3}
       propertyPath: m_LocalPosition.x

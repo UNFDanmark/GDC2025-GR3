@@ -78,6 +78,7 @@ public class attachplayer : MonoBehaviour
 
             if (pSS.jumpAction.WasPressedThisFrame())
             {
+                pSS.animator.SetTrigger("takeoff");
                 attachable = true;
                 isattached = false;
                 pSS.EE = false;

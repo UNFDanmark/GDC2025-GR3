@@ -68,6 +68,10 @@ public class PlayerScript : MonoBehaviour
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + transform.eulerAngles.y;
         
         animator.SetBool("grounded",iGG.isGrounded);
+        if (myState == State.ATTACHED || myState == State.ATTACHEDGUARD || myState == State.ATTACHNONHUMAN)
+        {
+            animator.SetBool("grounded",true);
+        } 
         
         
         if (myState == State.NOT_ATTACHED)

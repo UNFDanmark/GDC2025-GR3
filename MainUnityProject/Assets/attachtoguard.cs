@@ -69,6 +69,7 @@ public class attachtoguard : MonoBehaviour
                     pSS.EE = false;
                     pSS.PlayerVelo.y = Mathf.Sqrt(pSS.jumpHeight * -3.0f * pSS.gravitySpeed);
                     pSS.currentspeed += 1.5f;
+                    pSS.animator.SetTrigger("takeoff");
 
                     pSS.myState = PlayerScript.State.NOT_ATTACHED;
                 }
