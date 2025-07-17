@@ -30063,15 +30063,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 780728059821008441, guid: 2eb0fb79b7b0b02449f3bf4a9d24603a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8850288
+      value: -3.8850286
       objectReference: {fileID: 0}
     - target: {fileID: 780728059821008441, guid: 2eb0fb79b7b0b02449f3bf4a9d24603a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.466612
+      value: 13.802141
       objectReference: {fileID: 0}
     - target: {fileID: 780728059821008441, guid: 2eb0fb79b7b0b02449f3bf4a9d24603a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.3391685
+      value: -7.9354906
       objectReference: {fileID: 0}
     - target: {fileID: 780728059821008441, guid: 2eb0fb79b7b0b02449f3bf4a9d24603a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -30264,6 +30264,10 @@ PrefabInstance:
       propertyPath: BoundingVolume
       value: 
       objectReference: {fileID: 143990820}
+    - target: {fileID: 6693351320395975920, guid: 1fc4bbfd16f7b5a44b197ffbb22ccea4, type: 3}
+      propertyPath: CameraRadius
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7362392977300035707, guid: 1fc4bbfd16f7b5a44b197ffbb22ccea4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8850296
