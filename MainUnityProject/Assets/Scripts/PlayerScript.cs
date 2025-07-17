@@ -67,6 +67,7 @@ public class PlayerScript : MonoBehaviour
         float angle=0f;
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + transform.eulerAngles.y;
         
+        animator.SetBool("grounded",iGG.isGrounded);
         
         
         if (myState == State.NOT_ATTACHED)
@@ -81,11 +82,14 @@ public class PlayerScript : MonoBehaviour
             if (iGG.isGrounded && jumpAction.WasPressedThisFrame())
             {
                 PlayerVelo.y = Mathf.Sqrt((jumpHeight) * -3.0f * gravitySpeed);
+                animator.SetTrigger("takeoff");
+                
             }
 
             if (!iGG.isGrounded && jumpAction.WasPressedThisFrame())
             {
                 myState = PlayerScript.State.GLIDING;
+                
             }
             
             if (iGG.isGrounded)
@@ -128,11 +132,6 @@ public class PlayerScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, angle, 0f);
         finalMove.y = PlayerVelo.y * Time.deltaTime;
         controller.Move(finalMove);
-        
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
         
     }
 }
