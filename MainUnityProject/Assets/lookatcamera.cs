@@ -33,6 +33,10 @@ public class lookatcamera : MonoBehaviour
     
     void Update()
     {
+        if (!ap)
+        {
+            return;
+        }
         if (pSS.myState == PlayerScript.State.NOT_ATTACHED && ap.isInBox){
                 
             image.SetActive(true);
@@ -45,13 +49,5 @@ public class lookatcamera : MonoBehaviour
         {
             image.SetActive(false);
         }
-        
-        
-            
-            
-        
-        
-        
-      
     }
 }
